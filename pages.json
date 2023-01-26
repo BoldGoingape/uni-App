@@ -1,0 +1,73 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},{
+		    "path" : "pages/list/list",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "list页面",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+		    "path" : "pages/about/about",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "关于页面",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
+			"path": "pages/origin/origin",
+			"style": {
+				"navigationBarTitleText": "origin"
+			}
+		}
+		
+	 
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+		"tabBar": {
+				"color": "#333",
+				"selectedColor": "#015ff9",
+				"list": [
+					{
+						"text": "首页",
+						"pagePath": "pages/index/index",
+						"iconPath": "static/tabBar/andon_btn.png",
+						"selectedIconPath": "static/tabBar/andon_press_btn.png"
+					},
+					{
+						"text": "列表",
+						"pagePath": "pages/list/list",
+						"iconPath": "static/tabBar/gongwei_btn.png",
+						"selectedIconPath": "static/tabBar/gongwei_press_btn.png"
+					},
+					{
+						"text": "关于",
+						"pagePath": "pages/about/about",
+						"iconPath":"static/tabBar/jiankong_btn.png",
+						"selectedIconPath": "static/tabBar/jiankong_press_btn.png"
+					},
+					{
+						"text": "origin",
+						"pagePath": "pages/origin/origin",
+						"iconPath":"static/tabBar/xinxi_btn.png",
+						"selectedIconPath": "static/tabBar/xinxi_press_btn.png"
+					}
+				]
+			}
+}
