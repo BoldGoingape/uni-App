@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<navigator url="/pages/index/index" open-type="reLaunch">跳转首页</navigator>
+		<navigator url="/pages/index/index" open-type="reLaunch">跳转到首页</navigator>
 	</view>
 </template>
 
