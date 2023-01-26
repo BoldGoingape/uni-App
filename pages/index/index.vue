@@ -76,7 +76,7 @@
 			return {
 				title: 'Hello',
 				  iconType: ['success'],
-				  text:"你好",
+				  text:"新年快乐",
 				   indicatorDots: true,
 				              autoplay: true,
 				              interval: 2000,
