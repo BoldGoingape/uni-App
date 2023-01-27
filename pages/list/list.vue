@@ -14,7 +14,8 @@
 					{id:3,title:'编辑'},
 					{id:4,title:'查找'}
 				],
-				isActive:0
+				isActive:0,
+				value:'test'
 			};
 		},
 		methods:{
