@@ -37,19 +37,9 @@
 		<view class="uni-margin-wrap">
 					<swiper class="swiper" circular :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval"
 						:duration="duration" indicator-color="red" indicator-active-color="green" >
-						<swiper-item>
+						<swiper-item v-for="item in pocurl" :key="item.id">
 							<view class="swiper-item uni-bg-red">
-								<img src="/static/image/banner-1.jpg" alt="" srcset="">
-							</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item uni-bg-green">
-								<img src="/static/image/banner-2.jpg" alt="" srcset="">
-							</view>
-						</swiper-item>
-						<swiper-item>
-							<view class="swiper-item uni-bg-blue">
-								<img src="/static/image/banner-3.jpg" alt="" srcset="">
+								<img :src="item.url" alt="" srcset="">
 							</view>
 						</swiper-item>
 					</swiper>
@@ -67,6 +57,7 @@
 						
 						<!--  redirect-->
 						<navigator url="/pages/list/list" open-type="navigate">跳转列表</navigator>
+					
 	</view>
 </template>
 
@@ -78,16 +69,36 @@
 				  iconType: ['success'],
 				  text:"新年快乐！",
 				   indicatorDots: true,
-				              autoplay: true,
-				              interval: 2000,
-				              duration: 500
+				    autoplay: true,
+				    interval: 2000,
+				    duration: 500,
+					pocurl:[]
 			}
 		},
 		onLoad() {
-
+			uni.showLoading({
+				title:"数据加载中。。。"
+			})
+			uni.setTabBarBadge({
+			  index: 3,
+			  text: '3'
+			}),
+			uni.showTabBarRedDot({
+				index:1,
+			})
+			setTimeout(()=>{
+				uni.removeTabBarBadge({
+					index:3,
+					text:"3"
+				}),
+				uni.hideTabBarRedDot({
+					index:1
+				}),
+				uni.hideLoading()
+			},5000)
 		},
 		methods: {
- changeIndicatorDots(e) {
+		changeIndicatorDots(e) {
             this.indicatorDots = !this.indicatorDots
         },
         changeAutoplay(e) {
@@ -98,8 +109,32 @@
         },
         durationChange(e) {
             this.duration = e.target.value
-        }
-		}
+        },
+		getImg(){
+				uni.showLoading({
+					title:"数据加载中.."
+				}),
+				uni.request({
+					url:"https://api.thecatapi.com/v1/images/search?limit=1.5",
+					success:res=>{
+						this.pocurl=res.data,
+						setTimeout(()=>{
+							uni.hideLoading()
+						},650)
+					},
+					fail: (err) => {
+						console.log(err)
+					},
+					complete: () => {
+						uni.hideLoading()
+					}
+				})
+			}
+		},
+		mounted() {
+			this.getImg()
+			},
+		
 	}
 </script>
 

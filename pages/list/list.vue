@@ -1,7 +1,14 @@
 <template>
 	<view class="nav">
-		<view class="item " :class="isActive==index ? 'active' : ''" v-for="(item,index) in newArr" :key="item.id" @click="clickNave(index)">{{item.title}}</view>
+	<view class="item " :class="isActive==index ? 'active' : ''" v-for="(item,index) in newArr" :key="item.id" @click="clickNave(index)">{{item.title}}</view>
+		<view class="content">
+			<view class="texturl" v-for="item in pocurl" :key="item.id">
+				<img :src="item.url" alt="" srcset="">
+			</view>
+		</view>
+	
 	</view>
+
 </template>
 
 <script>
@@ -15,13 +22,41 @@
 					{id:4,title:'查找'}
 				],
 				isActive:0,
-				value:'test'
+				value:'test',
+				pocurl:[]
 			};
 		},
 		methods:{
 			clickNave(index){
 				this.isActive=index
-			}
+			},
+			getImg(){
+					uni.showLoading({
+						title:"数据加载中.."
+					}),
+					uni.request({
+						url:"https://api.thecatapi.com/v1/images/search",
+						data:{
+							limit:30
+						},
+						success:res=>{
+							this.pocurl=res.data,
+							console.log(res.data);
+							setTimeout(()=>{
+								uni.hideLoading()
+							},650)
+						},
+						fail: (err) => {
+							console.log(err)
+						},
+						complete: () => {
+							uni.hideLoading()
+						}
+					})
+				}
+		},
+		onLoad() {
+			this.getImg()
 		}
 	}
 </script>
@@ -45,5 +80,12 @@
 			
 		}
 	}
-		
+	.content {
+	position: absolute;
+	top:100rpx
+	}
+		img{
+			width: 100%;
+			height: 150rpm;
+		}
 </style>

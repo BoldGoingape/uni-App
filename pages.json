@@ -20,6 +20,7 @@
 		    "style" :                                                                                    
 		    {
 		        "navigationBarTitleText": "关于页面",
+				"navigationBarBackgroundColor":"#c00",
 		        "enablePullDownRefresh": false
 		    }
 		    
@@ -43,18 +44,27 @@
 		"tabBar": {
 				"color": "#333",
 				"selectedColor": "#015ff9",
+				"iconfontSrc": "static/fonct/iconfont.ttf",
 				"list": [
 					{
 						"text": "首页",
 						"pagePath": "pages/index/index",
 						"iconPath": "static/tabBar/andon_btn.png",
-						"selectedIconPath": "static/tabBar/andon_press_btn.png"
+						"selectedIconPath": "static/tabBar/andon_press_btn.png",
+						
+						"iconfont": {
+							"text": "\ue6e4",
+							"selectedText": "\ue6e4"
+						}
+						
+						
 					},
 					{
 						"text": "列表",
 						"pagePath": "pages/list/list",
 						"iconPath": "static/tabBar/gongwei_btn.png",
 						"selectedIconPath": "static/tabBar/gongwei_press_btn.png"
+					
 					},
 					{
 						"text": "关于",
@@ -67,6 +77,7 @@
 						"pagePath": "pages/origin/origin",
 						"iconPath":"static/tabBar/xinxi_btn.png",
 						"selectedIconPath": "static/tabBar/xinxi_press_btn.png"
+						
 					}
 				]
 			}
